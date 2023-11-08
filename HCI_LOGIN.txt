@@ -1,0 +1,40 @@
+Design  GUI  using Python for  Login Window.
+
+import tkinter as tk
+
+def login():
+    # Replace this with your actual authentication logic
+    username = username_entry.get()
+    password = password_entry.get()
+
+    if username == "your_username" and password == "your_password":
+        result_label.config(text="Login Successful")
+    else:
+        result_label.config(text="Login Failed")
+
+# Create the main window
+window = tk.Tk()
+window.title("Login Window")
+
+# Create and configure labels
+username_label = tk.Label(window, text="Username:")
+password_label = tk.Label(window, text="Password:")
+result_label = tk.Label(window, text="", fg="red")
+
+# Create and configure entry widgets
+username_entry = tk.Entry(window)
+password_entry = tk.Entry(window, show="*")  # Use "show" to hide the password characters
+
+# Create and configure login button
+login_button = tk.Button(window, text="Login", command=login)
+
+# Place widgets in the window using the grid layout
+username_label.grid(row=0, column=0, padx=10, pady=10)
+username_entry.grid(row=0, column=1, padx=10, pady=10)
+password_label.grid(row=1, column=0, padx=10, pady=10)
+password_entry.grid(row=1, column=1, padx=10, pady=10)
+login_button.grid(row=2, column=0, columnspan=2, padx=10, pady=10)
+result_label.grid(row=3, column=0, columnspan=2)
+
+# Start the GUI event loop
+window.mainloop()

@@ -1,0 +1,63 @@
+Design  GUI  using Python for  customer Feedback  Form about  Food  in Hotel .(Use  Text ,Label,Checkbutton, etc)
+
+import tkinter as tk
+
+# Function to submit feedback
+def submit_feedback():
+    feedback_text = feedback_textbox.get("1.0", "end-1c")  # Retrieve the feedback text
+    rating = rating_var.get()
+    recommend = recommend_var.get()
+
+    feedback_result_label.config(text="Thank you for your feedback!\n\nRating: {}\nRecommend: {}\nFeedback: \n{}".format(rating, recommend, feedback_text))
+
+# Create the main window
+window = tk.Tk()
+window.title("Customer Feedback Form")
+
+# Create and configure labels
+rating_label = tk.Label(window, text="Rate the Food:")
+recommend_label = tk.Label(window, text="Would you recommend us?")
+feedback_label = tk.Label(window, text="Additional Comments:")
+
+# Create and configure variables for checkbuttons
+rating_var = tk.StringVar()
+recommend_var = tk.StringVar()
+
+# Create and configure radio buttons for rating
+rating_excellent = tk.Radiobutton(window, text="Excellent", variable=rating_var, value="Excellent")
+rating_good = tk.Radiobutton(window, text="Good", variable=rating_var, value="Good")
+rating_average = tk.Radiobutton(window, text="Average", variable=rating_var, value="Average")
+rating_poor = tk.Radiobutton(window, text="Poor", variable=rating_var, value="Poor")
+
+# Create and configure checkbuttons for recommendation
+recommend_yes = tk.Checkbutton(window, text="Yes, I recommend", variable=recommend_var, onvalue="Yes", offvalue="No")
+recommend_no = tk.Checkbutton(window, text="No, I do not recommend", variable=recommend_var, onvalue="No", offvalue="Yes")
+
+# Create and configure a text entry field for feedback
+feedback_textbox = tk.Text(window, height=5, width=30)
+
+# Create and configure the submit button
+submit_button = tk.Button(window, text="Submit Feedback", command=submit_feedback)
+
+# Create and configure the feedback result label
+feedback_result_label = tk.Label(window, text="")
+
+# Place widgets in the window using the grid layout
+rating_label.grid(row=0, column=0, padx=10, pady=10)
+rating_excellent.grid(row=1, column=0, padx=10, pady=5)
+rating_good.grid(row=1, column=1, padx=10, pady=5)
+rating_average.grid(row=1, column=2, padx=10, pady=5)
+rating_poor.grid(row=1, column=3, padx=10, pady=5)
+
+recommend_label.grid(row=2, column=0, padx=10, pady=10)
+recommend_yes.grid(row=3, column=0, padx=10, pady=5)
+recommend_no.grid(row=3, column=1, padx=10, pady=5)
+
+feedback_label.grid(row=4, column=0, padx=10, pady=10)
+feedback_textbox.grid(row=5, column=0, columnspan=2, padx=10, pady=5)
+
+submit_button.grid(row=6, column=0, columnspan=2, padx=10, pady=10)
+feedback_result_label.grid(row=7, column=0, columnspan=2, padx=10, pady=10)
+
+# Start the GUI event loop
+window.mainloop()

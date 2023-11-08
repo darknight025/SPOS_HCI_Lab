@@ -1,0 +1,67 @@
+Design  GUI  using Python for  online  Quiz.(Use  Text ,Label,Checkbutton, etc)
+
+
+import tkinter as tk
+
+# Function to grade the quiz
+def grade_quiz():
+    correct_answers = ["B", "A", "C"]
+    user_answers = [q1_var.get(), q2_var.get(), q3_var.get()]
+
+    score = sum([1 for i in range(3) if user_answers[i] == correct_answers[i]])
+    result_label.config(text=f"Score: {score}/3")
+
+# Create the main window
+window = tk.Tk()
+window.title("Online Quiz")
+
+# Create and configure labels
+question1_label = tk.Label(window, text="Question 1: What is the capital of France?")
+question2_label = tk.Label(window, text="Question 2: Which planet is closest to the sun?")
+question3_label = tk.Label(window, text="Question 3: What is 2 + 2?")
+
+# Create and configure variables for checkbuttons
+q1_var = tk.StringVar()
+q2_var = tk.StringVar()
+q3_var = tk.StringVar()
+
+# Create and configure checkbuttons for answer choices
+q1_choice_a = tk.Radiobutton(window, text="A. London", variable=q1_var, value="A")
+q1_choice_b = tk.Radiobutton(window, text="B. Paris", variable=q1_var, value="B")
+q1_choice_c = tk.Radiobutton(window, text="C. Berlin", variable=q1_var, value="C")
+
+q2_choice_a = tk.Radiobutton(window, text="A. Venus", variable=q2_var, value="A")
+q2_choice_b = tk.Radiobutton(window, text="B. Mars", variable=q2_var, value="B")
+q2_choice_c = tk.Radiobutton(window, text="C. Mercury", variable=q2_var, value="C")
+
+q3_choice_a = tk.Radiobutton(window, text="A. 3", variable=q3_var, value="A")
+q3_choice_b = tk.Radiobutton(window, text="B. 4", variable=q3_var, value="B")
+q3_choice_c = tk.Radiobutton(window, text="C. 5", variable=q3_var, value="C")
+
+# Create and configure the submit button
+submit_button = tk.Button(window, text="Submit", command=grade_quiz)
+
+# Create and configure the result label
+result_label = tk.Label(window, text="Score: 0/3")
+
+# Place widgets in the window using the grid layout
+question1_label.grid(row=0, column=0, columnspan=2, padx=10, pady=10)
+q1_choice_a.grid(row=1, column=0, padx=10, pady=5)
+q1_choice_b.grid(row=1, column=1, padx=10, pady=5)
+q1_choice_c.grid(row=1, column=2, padx=10, pady=5)
+
+question2_label.grid(row=2, column=0, columnspan=2, padx=10, pady=10)
+q2_choice_a.grid(row=3, column=0, padx=10, pady=5)
+q2_choice_b.grid(row=3, column=1, padx=10, pady=5)
+q2_choice_c.grid(row=3, column=2, padx=10, pady=5)
+
+question3_label.grid(row=4, column=0, columnspan=2, padx=10, pady=10)
+q3_choice_a.grid(row=5, column=0, padx=10, pady=5)
+q3_choice_b.grid(row=5, column=1, padx=10, pady=5)
+q3_choice_c.grid(row=5, column=2, padx=10, pady=5)
+
+submit_button.grid(row=6, column=0, columnspan=2, padx=10, pady=10)
+result_label.grid(row=7, column=0, columnspan=2, padx=10, pady=10)
+
+# Start the GUI event loop
+window.mainloop()

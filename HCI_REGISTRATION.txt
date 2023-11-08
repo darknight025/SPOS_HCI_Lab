@@ -1,0 +1,62 @@
+Design  GUI  using Python for  student Registration  Form.(Use  Text ,Label,Checkbutton,List box etc)
+
+
+import tkinter as tk
+
+# Function to submit the registration form
+def submit_registration():
+    first_name = first_name_entry.get()
+    last_name = last_name_entry.get()
+    gender = gender_var.get()
+    selected_courses = [courses_listbox.get(idx) for idx in courses_listbox.curselection()]
+
+    # Replace this with your registration logic
+    print("First Name:", first_name)
+    print("Last Name:", last_name)
+    print("Gender:", gender)
+    print("Courses:", selected_courses)
+
+# Create the main window
+window = tk.Tk()
+window.title("Student Registration Form")
+
+# Create and configure labels
+first_name_label = tk.Label(window, text="First Name:")
+last_name_label = tk.Label(window, text="Last Name:")
+gender_label = tk.Label(window, text="Gender:")
+courses_label = tk.Label(window, text="Select Courses:")
+
+# Create and configure entry widgets
+first_name_entry = tk.Entry(window)
+last_name_entry = tk.Entry(window)
+
+# Create and configure a checkbutton for gender selection
+gender_var = tk.StringVar()
+gender_male = tk.Radiobutton(window, text="Male", variable=gender_var, value="Male")
+gender_female = tk.Radiobutton(window, text="Female", variable=gender_var, value="Female")
+
+
+
+# Create and configure a listbox for course selection
+courses_listbox = tk.Listbox(window, selectmode=tk.MULTIPLE)
+courses = ["Math", "Science", "History", "English", "Computer Science"]
+for course in courses:
+    courses_listbox.insert(tk.END, course)
+
+# Create and configure the submit button
+submit_button = tk.Button(window, text="Submit", command=submit_registration)
+
+# Place widgets in the window using the grid layout
+first_name_label.grid(row=0, column=0, padx=10, pady=10)
+first_name_entry.grid(row=0, column=1, padx=10, pady=10)
+last_name_label.grid(row=1, column=0, padx=10, pady=10)
+last_name_entry.grid(row=1, column=1, padx=10, pady=10)
+gender_label.grid(row=2, column=0, padx=10, pady=10)
+gender_male.grid(row=2, column=1, padx=10, pady=10)
+gender_female.grid(row=2, column=2, padx=10, pady=10)
+courses_label.grid(row=3, column=0, padx=10, pady=10)
+courses_listbox.grid(row=3, column=1, padx=10, pady=10)
+submit_button.grid(row=4, column=0, columnspan=2, padx=10, pady=10)
+
+# Start the GUI event loop
+window.mainloop()
